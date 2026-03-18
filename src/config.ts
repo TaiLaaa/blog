@@ -20,7 +20,7 @@ const SITE_LANG = "zh_CN";
 const SITE_TIMEZONE = 8;
 
 export const siteConfig: SiteConfig = {
-	title: "Sir's Blog",
+	title: "TaiLaa的blog",
 	subtitle: "写代码、折腾服务器、记录生活",
 	siteURL: "https://xn--jpra6118a.xn--6qq986b3xl/", // 部署后替换为实际域名
 	siteStartDate: "2026-03-18",
@@ -42,7 +42,7 @@ export const siteConfig: SiteConfig = {
 	},
 	navbarTitle: {
 		mode: "text-icon",
-		text: "Sir's Blog",
+		text: "TaiLaa的blog",
 		icon: "assets/home/home.png",
 		logo: "assets/home/default-logo.png",
 	},
@@ -103,7 +103,7 @@ export const siteConfig: SiteConfig = {
 		},
 		homeText: {
 			enable: true,
-			title: "Sir's Blog",
+			title: "TaiLaa的blog",
 			subtitle: [
 				"写代码、折腾服务器、记录生活",
 				"技术改变世界，代码改变生活",
@@ -203,10 +203,10 @@ export const navBarConfig: NavBarConfig = {
 			icon: "material-symbols:link",
 			children: [
 				{
-					name: "GitHub",
-					url: "https://github.com/",
+					name: "Bilibili",
+					url: "https://space.bilibili.com/496320965",
 					external: true,
-					icon: "fa7-brands:github",
+					icon: "fa7-brands:bilibili",
 				},
 			],
 		},
@@ -215,7 +215,7 @@ export const navBarConfig: NavBarConfig = {
 
 export const profileConfig: ProfileConfig = {
 	avatar: "assets/images/avatar.webp",
-	name: "Sir",
+	name: "TaiLaa",
 	bio: "写代码、折腾服务器、记录生活",
 	typewriter: {
 		enable: true,
@@ -223,9 +223,9 @@ export const profileConfig: ProfileConfig = {
 	},
 	links: [
 		{
-			name: "GitHub",
-			icon: "fa7-brands:github",
-			url: "https://github.com/",
+			name: "Bilibili",
+			icon: "fa7-brands:bilibili",
+			url: "https://space.bilibili.com/496320965",
 		},
 	],
 };

@@ -1,0 +1,62 @@
+---
+// 退役倒计时组件
+---
+<div class="countdown-container" id="countdown-timer">
+  <div class="countdown-label">🎖️ 距离博主本人退役还有</div>
+  <div class="countdown-time" id="countdown-display">加载中...</div>
+</div>
+
+<script>
+  const TARGET_DATE = new Date('2026-09-01T00:00:00+08:00').getTime();
+
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const diff = TARGET_DATE - now;
+
+    if (diff <= 0) {
+      document.getElementById('countdown-display')!.textContent = '已退役！🎉';
+      return;
+    }
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+    document.getElementById('countdown-display')!.textContent = 
+      `${days}天 ${hours}时 ${minutes}分 ${seconds}秒`;
+
+    requestAnimationFrame(updateCountdown);
+  }
+
+  // 用 requestAnimationFrame 实现真正的实时倒计时
+  updateCountdown();
+</script>
+
+<style>
+  .countdown-container {
+    background: var(--card-bg, rgba(255, 255, 255, 0.05));
+    border-radius: 12px;
+    padding: 16px;
+    margin-top: 12px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color, rgba(255, 255, 255, 0.1));
+  }
+
+  .countdown-label {
+    font-size: 0.85em;
+    opacity: 0.8;
+    margin-bottom: 8px;
+  }
+
+  .countdown-time {
+    font-size: 1.3em;
+    font-weight: bold;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 1px;
+  }
+</style>

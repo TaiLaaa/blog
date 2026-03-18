@@ -59,6 +59,11 @@ import { i18n } from "../../../i18n/translation";
                 <span class="site-stats-display">{i18n(I18nKey.profileStatsLoading)}</span>
             </div>
         </div>
+    <!-- 退役倒计时 -->
+    <div class="countdown-box" style="margin-top:12px;padding:12px;border-radius:12px;text-align:center;background:var(--card-bg,rgba(255,255,255,0.05));border:1px solid var(--border-color,rgba(255,255,255,0.1));">
+      <div style="font-size:0.85em;opacity:0.8;margin-bottom:6px;">🎖️ 距离博主本人退役还有</div>
+      <div id="retirement-countdown" style="font-size:1.2em;font-weight:bold;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:1px;">加载中...</div>
+    </div>
     </div>
 </div>
 
@@ -110,4 +115,27 @@ import { i18n } from "../../../i18n/translation";
     } else {
         fetchSiteStats();
     }
+</script>
+<script is:inline>
+(function() {
+  var TARGET = new Date('2026-09-01T00:00:00+08:00').getTime();
+  function tick() {
+    var el = document.getElementById('retirement-countdown');
+    if (!el) { setTimeout(tick, 100); return; }
+    var diff = TARGET - Date.now();
+    if (diff <= 0) { el.textContent = '已退役！🎉'; return; }
+    var d = Math.floor(diff / 86400000);
+    var h = Math.floor((diff % 86400000) / 3600000);
+    var m = Math.floor((diff % 3600000) / 60000);
+    var s = Math.floor((diff % 60000) / 1000);
+    el.textContent = d + '天 ' + h + '时 ' + m + '分 ' + s + '秒';
+    setTimeout(tick, 1000);
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', tick);
+  } else {
+    tick();
+  }
+  document.addEventListener('astro:page-load', tick);
+})();
 </script>
