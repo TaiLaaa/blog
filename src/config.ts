@@ -1,0 +1,387 @@
+import type {
+	AnnouncementConfig,
+	CommentConfig,
+	ExpressiveCodeConfig,
+	FooterConfig,
+	FullscreenWallpaperConfig,
+	LicenseConfig,
+	MusicPlayerConfig,
+	NavBarConfig,
+	PermalinkConfig,
+	ProfileConfig,
+	SakuraConfig,
+	ShareConfig,
+	SidebarLayoutConfig,
+	SiteConfig,
+} from "./types/config";
+import { LinkPreset } from "./types/config";
+
+const SITE_LANG = "zh_CN";
+const SITE_TIMEZONE = 8;
+
+export const siteConfig: SiteConfig = {
+	title: "Sir's Blog",
+	subtitle: "写代码、折腾服务器、记录生活",
+	siteURL: "https://blog.example.com/", // 部署后替换为实际域名
+	siteStartDate: "2026-03-18",
+	timeZone: SITE_TIMEZONE,
+	lang: SITE_LANG,
+	themeColor: {
+		hue: 200,
+		fixed: false,
+	},
+	featurePages: {
+		anime: false,
+		diary: false,
+		friends: true,
+		projects: true,
+		skills: true,
+		timeline: false,
+		albums: false,
+		devices: false,
+	},
+	navbarTitle: {
+		mode: "text-icon",
+		text: "Sir's Blog",
+		icon: "assets/home/home.png",
+		logo: "assets/home/default-logo.png",
+	},
+	pageScaling: {
+		enable: true,
+		targetWidth: 2000,
+	},
+	bangumi: {
+		userId: "",
+		fetchOnDev: false,
+	},
+	bilibili: {
+		vmid: "",
+		fetchOnDev: false,
+		coverMirror: "",
+		useWebp: true,
+	},
+	anime: {
+		mode: "local",
+	},
+	postListLayout: {
+		defaultMode: "list",
+		allowSwitch: true,
+	},
+	tagStyle: {
+		useNewStyle: true,
+	},
+	wallpaperMode: {
+		defaultMode: "banner",
+		showModeSwitchOnMobile: "desktop",
+	},
+	banner: {
+		src: {
+			desktop: [
+				"/assets/desktop-banner/1.webp",
+				"/assets/desktop-banner/2.webp",
+				"/assets/desktop-banner/3.webp",
+			],
+			mobile: [
+				"/assets/mobile-banner/1.webp",
+				"/assets/mobile-banner/2.webp",
+				"/assets/mobile-banner/3.webp",
+			],
+		},
+		position: "center",
+		carousel: {
+			enable: true,
+			interval: 3,
+		},
+		waves: {
+			enable: true,
+			performanceMode: false,
+			mobileDisable: false,
+		},
+		imageApi: {
+			enable: false,
+			url: "",
+		},
+		homeText: {
+			enable: true,
+			title: "Sir's Blog",
+			subtitle: [
+				"写代码、折腾服务器、记录生活",
+				"技术改变世界，代码改变生活",
+				"折腾是一种态度",
+			],
+			typewriter: {
+				enable: true,
+				speed: 80,
+				deleteSpeed: 40,
+				pauseTime: 2500,
+			},
+		},
+		credit: {
+			enable: false,
+			text: "",
+			url: "",
+		},
+		navbar: {
+			transparentMode: "semifull",
+		},
+	},
+	toc: {
+		enable: true,
+		mode: "sidebar",
+		depth: 3,
+		useJapaneseBadge: false,
+	},
+	showCoverInContent: true,
+	generateOgImages: false,
+	favicon: [],
+	font: {
+		asciiFont: {
+			fontFamily: "ZenMaruGothic-Medium",
+			fontWeight: "400",
+			localFonts: ["ZenMaruGothic-Medium.ttf"],
+			enableCompress: true,
+		},
+		cjkFont: {
+			fontFamily: "萝莉体 第二版",
+			fontWeight: "500",
+			localFonts: ["萝莉体 第二版.ttf"],
+			enableCompress: true,
+		},
+	},
+	showLastModified: true,
+};
+
+export const fullscreenWallpaperConfig: FullscreenWallpaperConfig = {
+	src: {
+		desktop: ["/assets/desktop-banner/1.webp"],
+		mobile: ["/assets/mobile-banner/1.webp"],
+	},
+	position: "center",
+	carousel: {
+		enable: false,
+		interval: 5,
+	},
+	zIndex: -1,
+	opacity: 0.8,
+	blur: 1,
+};
+
+export const navBarConfig: NavBarConfig = {
+	links: [
+		LinkPreset.Home,
+		LinkPreset.Archive,
+		{
+			name: "项目",
+			url: "/projects/",
+			icon: "material-symbols:work",
+		},
+		{
+			name: "技能",
+			url: "/skills/",
+			icon: "material-symbols:psychology",
+		},
+		{
+			name: "关于",
+			url: "/content/",
+			icon: "material-symbols:info",
+			children: [
+				{
+					name: "关于我",
+					url: "/about/",
+					icon: "material-symbols:person",
+				},
+				{
+					name: "友链",
+					url: "/friends/",
+					icon: "material-symbols:group",
+				},
+			],
+		},
+		{
+			name: "链接",
+			url: "#",
+			icon: "material-symbols:link",
+			children: [
+				{
+					name: "GitHub",
+					url: "https://github.com/",
+					external: true,
+					icon: "fa7-brands:github",
+				},
+			],
+		},
+	],
+};
+
+export const profileConfig: ProfileConfig = {
+	avatar: "assets/images/avatar.webp",
+	name: "Sir",
+	bio: "写代码、折腾服务器、记录生活",
+	typewriter: {
+		enable: true,
+		speed: 80,
+	},
+	links: [
+		{
+			name: "GitHub",
+			icon: "fa7-brands:github",
+			url: "https://github.com/",
+		},
+	],
+};
+
+export const licenseConfig: LicenseConfig = {
+	enable: true,
+	name: "CC BY-NC-SA 4.0",
+	url: "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+};
+
+export const permalinkConfig: PermalinkConfig = {
+	enable: false,
+	format: "%postname%",
+};
+
+export const expressiveCodeConfig: ExpressiveCodeConfig = {
+	theme: "github-dark",
+	hideDuringThemeTransition: true,
+};
+
+export const commentConfig: CommentConfig = {
+	enable: false,
+	twikoo: {
+		envId: "",
+		lang: SITE_LANG,
+	},
+};
+
+export const shareConfig: ShareConfig = {
+	enable: true,
+};
+
+export const announcementConfig: AnnouncementConfig = {
+	title: "",
+	content: "欢迎来到我的博客！🎉",
+	closable: true,
+	link: {
+		enable: true,
+		text: "了解更多",
+		url: "/about/",
+		external: false,
+	},
+};
+
+export const musicPlayerConfig: MusicPlayerConfig = {
+	enable: false,
+	mode: "meting",
+	meting_api: "",
+	id: "",
+	server: "netease",
+	type: "playlist",
+};
+
+export const footerConfig: FooterConfig = {
+	enable: false,
+	customHtml: "",
+};
+
+export const sidebarLayoutConfig: SidebarLayoutConfig = {
+	properties: [
+		{
+			type: "profile",
+			position: "top",
+			class: "onload-animation",
+			animationDelay: 0,
+		},
+		{
+			type: "announcement",
+			position: "top",
+			class: "onload-animation",
+			animationDelay: 50,
+		},
+		{
+			type: "categories",
+			position: "sticky",
+			class: "onload-animation",
+			animationDelay: 150,
+			responsive: {
+				collapseThreshold: 5,
+			},
+		},
+		{
+			type: "tags",
+			position: "top",
+			class: "onload-animation",
+			animationDelay: 250,
+			responsive: {
+				collapseThreshold: 20,
+			},
+		},
+		{
+			type: "site-stats",
+			position: "top",
+			class: "onload-animation",
+			animationDelay: 200,
+		},
+	],
+	components: {
+		left: ["profile", "announcement", "categories", "tags"],
+		right: ["site-stats"],
+		drawer: ["profile", "announcement", "categories", "tags"],
+	},
+	defaultAnimation: {
+		enable: true,
+		baseDelay: 0,
+		increment: 50,
+	},
+	responsive: {
+		breakpoints: {
+			mobile: 768,
+			tablet: 1280,
+			desktop: 1280,
+		},
+	},
+};
+
+export const sakuraConfig: SakuraConfig = {
+	enable: false,
+	sakuraNum: 21,
+	limitTimes: -1,
+	size: { min: 0.5, max: 1.1 },
+	opacity: { min: 0.3, max: 0.9 },
+	speed: {
+		horizontal: { min: -1.7, max: -1.2 },
+		vertical: { min: 1.5, max: 2.2 },
+		rotation: 0.03,
+		fadeSpeed: 0.03,
+	},
+	zIndex: 100,
+};
+
+export const pioConfig: import("./types/config").PioConfig = {
+	enable: false,
+	models: ["/pio/models/pio/model.json"],
+	position: "left",
+	width: 280,
+	height: 250,
+	mode: "draggable",
+	hiddenOnMobile: true,
+	dialog: {
+		welcome: "欢迎来到我的博客！",
+		touch: ["别碰我！", "你在干嘛？"],
+		home: "点击回到首页！",
+		skin: ["换装啦~"],
+		close: "下次再见~",
+		link: "",
+	},
+};
+
+export const widgetConfigs = {
+	profile: profileConfig,
+	announcement: announcementConfig,
+	music: musicPlayerConfig,
+	layout: sidebarLayoutConfig,
+	sakura: sakuraConfig,
+	fullscreenWallpaper: fullscreenWallpaperConfig,
+	pio: pioConfig,
+	share: shareConfig,
+} as const;
