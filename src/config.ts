@@ -22,7 +22,7 @@ const SITE_TIMEZONE = 8;
 export const siteConfig: SiteConfig = {
 	title: "Sir's Blog",
 	subtitle: "写代码、折腾服务器、记录生活",
-	siteURL: "https://blog.example.com/", // 部署后替换为实际域名
+	siteURL: "https://xn--jpra6118a.xn--6qq986b3xl/", // 部署后替换为实际域名
 	siteStartDate: "2026-03-18",
 	timeZone: SITE_TIMEZONE,
 	lang: SITE_LANG,
