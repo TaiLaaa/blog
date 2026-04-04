@@ -12,9 +12,11 @@
   function updateCountdown() {
     const now = new Date().getTime();
     const diff = TARGET_DATE - now;
+    const el = document.getElementById('countdown-display');
+    if (!el) return;
 
     if (diff <= 0) {
-      document.getElementById('countdown-display')!.textContent = '已退役！🎉';
+      el.textContent = '已退役！🎉';
       return;
     }
 
@@ -23,14 +25,12 @@
     const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-    document.getElementById('countdown-display')!.textContent = 
-      `${days}天 ${hours}时 ${minutes}分 ${seconds}秒`;
-
-    requestAnimationFrame(updateCountdown);
+    el.textContent = `${days}天 ${hours}时 ${minutes}分 ${seconds}秒`;
   }
 
-  // 用 requestAnimationFrame 实现真正的实时倒计时
+  // 立即执行一次，再每秒更新
   updateCountdown();
+  setInterval(updateCountdown, 1000);
 </script>
 
 <style>
