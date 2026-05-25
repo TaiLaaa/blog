@@ -621,8 +621,23 @@
 				width: 280px !important;
 				min-width: 280px !important;
 				max-width: 280px !important;
-				bottom: 0.5rem !important;
-				right: 0.5rem !important;
+				bottom: max(0.5rem, env(safe-area-inset-bottom)) !important;
+				right: max(0.5rem, env(safe-area-inset-right)) !important;
+				z-index: 80;
+			}
+			.music-player.hidden-mode {
+				width: 3rem !important;
+				min-width: 3rem !important;
+				max-width: 3rem !important;
+				height: 3rem !important;
+				bottom: max(1rem, env(safe-area-inset-bottom)) !important;
+				right: max(1rem, env(safe-area-inset-right)) !important;
+			}
+			.music-player.hidden-mode :global(.orb-player-container) {
+				position: fixed;
+				bottom: max(1rem, env(safe-area-inset-bottom));
+				right: max(1rem, env(safe-area-inset-right));
+				z-index: 80;
 			}
 			:global(.mini-player) {
 				width: 280px !important;
