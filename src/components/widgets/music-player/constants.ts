@@ -1,6 +1,7 @@
 import type { Song } from "./types";
 
 export const STORAGE_KEY_VOLUME = "music-player-volume";
+export const STORAGE_KEY_VISIBILITY = "music-player-visible";
 
 export const DEFAULT_VOLUME = 0.7;
 

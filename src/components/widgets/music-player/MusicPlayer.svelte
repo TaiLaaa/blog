@@ -12,6 +12,7 @@
 
 	import {
 		STORAGE_KEY_VOLUME,
+		STORAGE_KEY_VISIBILITY,
 		ERROR_DISPLAY_DURATION,
 		SKIP_ERROR_DELAY,
 	} from "./constants";
@@ -52,7 +53,7 @@
 	let playlistState = $state(createPlaylistState());
 
 	let isExpanded = $state(false);
-	let isHidden = $state(false);
+	let isHidden = $state(!musicPlayerConfig.defaultOpen);
 	let showPlaylist = $state(false);
 	let errorMessage = $state("");
 	let showError = $state(false);
@@ -94,6 +95,33 @@
 		}
 	}
 
+	function loadVisibilitySettings() {
+		try {
+			if (typeof localStorage === "undefined") return;
+			const savedVisibility = localStorage.getItem(STORAGE_KEY_VISIBILITY);
+			if (savedVisibility === "shown") {
+				isHidden = false;
+			} else if (savedVisibility === "hidden") {
+				isHidden = true;
+			}
+		} catch (e) {
+			console.warn("Failed to load music player visibility:", e);
+		}
+	}
+
+	function saveVisibilitySettings() {
+		try {
+			if (typeof localStorage !== "undefined") {
+				localStorage.setItem(
+					STORAGE_KEY_VISIBILITY,
+					isHidden ? "hidden" : "shown",
+				);
+			}
+		} catch (e) {
+			console.warn("Failed to save music player visibility:", e);
+		}
+	}
+
 	function showErrorMessage(message: string) {
 		errorMessage = message;
 		showError = true;
@@ -120,6 +148,7 @@
 			isExpanded = false;
 			showPlaylist = false;
 		}
+		saveVisibilitySettings();
 	}
 
 	function togglePlaylist() {
@@ -287,6 +316,7 @@
 
 	onMount(() => {
 		loadVolumeSettings();
+		loadVisibilitySettings();
 		const interactionHandler = () =>
 			handleUserInteraction(audioPlayerState, audio);
 		unregister = registerInteractionHandler(interactionHandler);

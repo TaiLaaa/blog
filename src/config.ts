@@ -271,10 +271,11 @@ export const announcementConfig: AnnouncementConfig = {
 };
 
 export const musicPlayerConfig: MusicPlayerConfig = {
-	enable: false,
+	enable: true,
+	defaultOpen: false,
 	mode: "meting",
-	meting_api: "",
-	id: "",
+	meting_api: "https://www.bilibili.uno/api?server=:server&type=:type&id=:id&auth=:auth&r=:r",
+	id: "14164869977",
 	server: "netease",
 	type: "playlist",
 };
